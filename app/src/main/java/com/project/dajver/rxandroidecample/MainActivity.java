@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.project.dajver.rxandroidecample.adapter.ArticlesRecyclerAdapter;
-import com.project.dajver.rxandroidecample.adapter.manager.WrapperLinearLayout;
 import com.project.dajver.rxandroidecample.api.RepositoryImpl;
 import com.project.dajver.rxandroidecample.api.model.ArticlesModel;
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        recyclerView.setLayoutManager(new WrapperLinearLayout(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         new RepositoryImpl().getArticles("https://www.instructables.com/technology/")
@@ -55,6 +54,5 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete() { }
                 });
-
     }
 }
